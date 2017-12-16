@@ -9,9 +9,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 public class MessageServiceTest extends AbstractTransactionalJUnit38SpringContextTests {
 
 //	@Resource
-//	private MessageService messageService;
-//	
-//	public void testSendMessage(){
-//		messageService.sendMessage("xxx", "xxxxx", 1, 2);
-//	}
+	//private MessageService messageService;
+	
+	//public void testSendMessage(){
+		//messageService.sendMessage("xxx", "xxxxx", 1, 2);
+	//}
 }

@@ -109,8 +109,8 @@
    <filter-mapping>
    		<filter-name>openSessionInViewFilter</filter-name>
    		<url-pattern>/*</url-pattern>
-           <dispatcher>request</dispatcher>
-     	    <dispatcher>forward</dispatcher>
+         <!--    <dispatcher>request</dispatcher>
+     	    <dispatcher>forward</dispatcher>-->
    </filter-mapping>
    
     <filter>
@@ -120,8 +120,8 @@
     <filter-mapping>
         <filter-name>struts2</filter-name>
         <url-pattern>/*</url-pattern>
-        <dispatcher>request</dispatcher>
-     	 <dispatcher>forward</dispatcher>
+       <!--  dispatcher>request</dispatcher>
+     	 <dispatcher>forward</dispatcher>-->
     </filter-mapping>    
   
 </web-app>

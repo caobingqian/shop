@@ -27,8 +27,8 @@ public class LoginInterceptor extends AbstractInterceptor {
 //		ServletContext application = (ServletContext) invocation.getInvocationContext().get(ServletActionContext.SERVLET_CONTEXT);  
 //		String urlPattern = application.getInitParameter("urlPattern");
 //		String escape = application.getInitParameter("escape");
-//		urlPattern.replace('，', ',');
-//		escape.replace('，', ',');
+//		urlPattern.replace('锛�', ',');
+//		escape.replace('锛�', ',');
 //		urlPatterns = urlPattern.split(",");
 //		escapeUrls = escape.split(",");
 		
@@ -40,9 +40,9 @@ public class LoginInterceptor extends AbstractInterceptor {
 			}
 		}
 		
-		String result = invocation.invoke();//继续执行
+		String result = invocation.invoke();//缁х画鎵ц
 		
-		//所有拦截器及对应的Action执行完毕返回后的后续处理工作	
+		//鎵�鏈夋嫤鎴櫒鍙婂搴旂殑Action鎵ц瀹屾瘯杩斿洖鍚庣殑鍚庣画澶勭悊宸ヤ綔	
 		
 		return result;
 

@@ -1,3 +1,2 @@
 eclipse.preferences.version=1
-encoding//src/org/bs/ssh/filter/AttachmentFilter.java=UTF-8
-encoding//src/org/bs/ssh/filter/LoginFilter.java=UTF-8
+encoding//src/org/bs/ssh/interceptor/LoginInterceptor.java=UTF-8
