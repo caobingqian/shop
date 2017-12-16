@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<include file="common.xml"></include>
+	<package name="backend" namespace="/backend"  extends="common">
+		<action name="member" class="memberAction" >
+			<result name="add_input">/backend/member/add_member.jsp</result>
+			<result name="add_success">/backend/member/add_member_success.jsp</result>
+			<result name="update_member_input">/backend/member/update_member_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">member</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/member/member_list.jsp</result>
+			<result name="show">/backend/member/show_member.jsp</result>
+			<result name="member_dayin_success">/backend/member/member_dayin_success.jsp</result>
+			<result name="membershow">/membershow.jsp</result>
+			<result name="registsuccess" type="redirect">/registsuccess.jsp</result>
+			<result name="member_modify">/member_modify.jsp</result>
+			<result name="member">/member.jsp</result>
+		</action>
+		<action name="news" class="newsAction" >
+			<result name="add_input">/backend/news/add_news.jsp</result>
+			<result name="add_success">/backend/news/add_news_success.jsp</result>
+			<result name="update_news_input">/backend/news/update_news_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">news</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/news/news_list.jsp</result>
+			<result name="show">/backend/news/show_news.jsp</result>
+		</action>
+		<action name="goodsClassify" class="goodsClassifyAction" >
+			<result name="add_input">/backend/goodsClassify/add_goodsClassify.jsp</result>
+			<result name="add_success">/backend/goodsClassify/add_goodsClassify_success.jsp</result>
+			<result name="update_goodsClassify_input">/backend/goodsClassify/update_goodsClassify_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">goodsClassify</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/goodsClassify/goodsClassify_list.jsp</result>
+			<result name="show">/backend/goodsClassify/show_goodsClassify.jsp</result>
+		</action>
+		<action name="goods" class="goodsAction" >
+			<result name="add_input">/backend/goods/add_goods.jsp</result>
+			<result name="add_success">/backend/goods/add_goods_success.jsp</result>
+			<result name="update_goods_input">/backend/goods/update_goods_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">goods</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/goods/goods_list.jsp</result>
+			<result name="show">/backend/goods/show_goods.jsp</result>
+		</action>
+		<action name="orders" class="ordersAction" >
+			<result name="add_input">/backend/orders/add_orders.jsp</result>
+			<result name="add_success">/backend/orders/add_orders_success.jsp</result>
+			<result name="update_orders_input">/backend/orders/update_orders_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">orders</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/orders/orders_list.jsp</result>
+			<result name="show">/backend/orders/show_orders.jsp</result>
+		</action>
+		<action name="comments" class="commentsAction" >
+			<result name="add_input">/backend/comments/add_comments.jsp</result>
+			<result name="add_success">/backend/comments/add_comments_success.jsp</result>
+			<result name="update_comments_input">/backend/comments/update_comments_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">comments</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/comments/comments_list.jsp</result>
+			<result name="show">/backend/comments/show_comments.jsp</result>
+		</action>
+		<action name="role" class="roleAction" >
+			<result name="add_input">/backend/role/add_role.jsp</result>
+			<result name="add_success">/backend/role/add_role_success.jsp</result>
+			<result name="update_role_input">/backend/role/update_role_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/backend</param>
+	    		<param name="actionName">role</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/role/role_list.jsp</result>
+		</action>
+		<action name="login" class="loginAction" >
+			<result name="login" type="chain">
+				<param name="namespace">/backend</param>
+	    		<param name="actionName">login</param>
+	    		<param name="method">login</param>
+			</result>
+		</action>
+		<action name="sys" class="sysAction" >
+			<result name="update_password_success" type="redirect">/backend/sys/update_password_success.jsp</result>
+			<result name="update_member_password_success" type="redirect">/member_update_password_success.jsp</result>
+		</action>
+		<action name="user" class="userAction" >
+			<result name="view_user">/backend/user/user_update_input.jsp</result>
+			<result name="user_list">/backend/user/user_list.jsp</result>
+		</action>
+		<action name="checkCode" class="checkCodeAction" />
+		<action name="upload" class="uploadAction" >
+			<result name="success">/backend/upload.jsp</result>
+		</action>
+	</package>
+	<package name="site" namespace="/"  extends="common">
+		<action name="site" class="siteAction" >
+			<result name="orders">/orders.jsp</result>
+			<result name="orderss">/orderss.jsp</result>
+			<result name="goods">/goods.jsp</result>
+			<result name="goodss">/goodss.jsp</result>
+			<result name="goodsClassify">/goodsClassify.jsp</result>
+			<result name="goodsClassifys">/goodsClassifys.jsp</result>
+			<result name="news">/news.jsp</result>
+			<result name="newss">/newss.jsp</result>
+			<result name="member">/member.jsp</result>
+			<result name="members">/members.jsp</result>
+			<result name="comments">/comments.jsp</result>
+			<result name="commentss">/commentss.jsp</result>
+			<result name="index">/index.jsp</result>
+			<result name="search">/search.jsp</result>
+			<result name="classify">/classify.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">site</param>
+	    		<param name="method">list</param>
+			</result>
+		</action>
+		<action name="member" class="memberAction" >
+			<result name="add_input">/backend/member/add_member.jsp</result>
+			<result name="add_success">/backend/member/add_member_success.jsp</result>
+			<result name="update_member_input">/backend/member/update_member_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">member</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/member/member_list.jsp</result>
+			<result name="show">/backend/member/show_member.jsp</result>
+			<result name="member_dayin_success">/backend/member/member_dayin_success.jsp</result>
+			<result name="membershow">/membershow.jsp</result>
+			<result name="registsuccess" type="redirect">/registsuccess.jsp</result>
+			<result name="member_modify">/member_modify.jsp</result>
+			<result name="member">/member.jsp</result>
+		</action>
+		<action name="news" class="newsAction" >
+			<result name="add_input">/backend/news/add_news.jsp</result>
+			<result name="add_success">/backend/news/add_news_success.jsp</result>
+			<result name="update_news_input">/backend/news/update_news_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">news</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/news/news_list.jsp</result>
+			<result name="show">/backend/news/show_news.jsp</result>
+		</action>
+		<action name="goodsClassify" class="goodsClassifyAction" >
+			<result name="add_input">/backend/goodsClassify/add_goodsClassify.jsp</result>
+			<result name="add_success">/backend/goodsClassify/add_goodsClassify_success.jsp</result>
+			<result name="update_goodsClassify_input">/backend/goodsClassify/update_goodsClassify_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">goodsClassify</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/goodsClassify/goodsClassify_list.jsp</result>
+			<result name="show">/backend/goodsClassify/show_goodsClassify.jsp</result>
+		</action>
+		<action name="goods" class="goodsAction" >
+			<result name="add_input">/backend/goods/add_goods.jsp</result>
+			<result name="add_success">/backend/goods/add_goods_success.jsp</result>
+			<result name="update_goods_input">/backend/goods/update_goods_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">goods</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/goods/goods_list.jsp</result>
+			<result name="show">/backend/goods/show_goods.jsp</result>
+		</action>
+		<action name="orders" class="ordersAction" >
+			<result name="add_input">/backend/orders/add_orders.jsp</result>
+			<result name="add_success">/backend/orders/add_orders_success.jsp</result>
+			<result name="update_orders_input">/backend/orders/update_orders_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">orders</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="buysuccess">/buysuccess.jsp</result>
+			<result name="list">/backend/orders/orders_list.jsp</result>
+			<result name="show">/backend/orders/show_orders.jsp</result>
+		</action>
+		<action name="comments" class="commentsAction" >
+			<result name="add_input">/backend/comments/add_comments.jsp</result>
+			<result name="add_success">/backend/comments/add_comments_success.jsp</result>
+			<result name="update_comments_input">/backend/comments/update_comments_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">comments</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="goods" type="redirectAction">
+				<param name="namespace">/</param>
+	    		<param name="actionName">site</param>
+	    		<param name="method">goods</param>
+	    		<param name="id">${comments.goods.id}</param>
+			</result>
+			<result name="url" type="redirect">${url}</result>
+			<result name="list">/backend/comments/comments_list.jsp</result>
+			<result name="show">/backend/comments/show_comments.jsp</result>
+		</action>
+		<action name="role" class="roleAction" >
+			<result name="add_input">/backend/role/add_role.jsp</result>
+			<result name="add_success">/backend/role/add_role_success.jsp</result>
+			<result name="update_role_input">/backend/role/update_role_input.jsp</result>
+			<result name="showlist" type="chain">
+				<param name="namespace">/</param>
+	    		<param name="actionName">role</param>
+	    		<param name="method">list</param>
+			</result>
+			<result name="list">/backend/role/role_list.jsp</result>
+		</action>
+		<action name="login" class="loginAction" />
+		<action name="sys" class="sysAction" >
+			<result name="update_password_success" type="redirect">/backend/sys/update_password_success.jsp</result>
+			<result name="update_member_password_success" type="redirect">/member_update_password_success.jsp</result>
+		</action>
+		<action name="user" class="userAction" >
+			<result name="view_user">/backend/user/user_update_input.jsp</result>
+			<result name="user_list">/backend/user/user_list.jsp</result>
+		</action>
+		<action name="checkCode" class="checkCodeAction" />
+		<action name="upload" class="uploadAction" >
+			<result name="success">/backend/upload.jsp</result>
+		</action>
+	</package>
+	
+	
+</struts>

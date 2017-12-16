@@ -1,12 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
-  <display-name>bigwork</display-name>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+   <!-- 
+   	配置Listener，使得应用服务器在启动的时候，创建BeanFactory对象
+   	并且把BeanFactory对象放入ServletContext中！ 
+   -->
+   <context-param>
+   	  <param-name>contextConfigLocation</param-name>
+   	  <param-value>classpath*:applicationContext.xml</param-value>
+   </context-param>
+  
+   <listener>
+   	  <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener>
+   
+   <session-config><session-timeout>60</session-timeout></session-config>
+
+  <context-param>
+    <param-name>isSupportCheckCode</param-name>
+    <param-value>0</param-value>
+  </context-param>
+
+  <filter>
+    <filter-name>EncodingFilter</filter-name>
+    <filter-class>org.bs.ssh.filter.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>EncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>PageFilter</filter-name>
+    <filter-class>org.bs.ssh.filter.PageFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>PageFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>IndexFilter</filter-name>
+    <filter-class>org.bs.ssh.filter.IndexFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>IndexFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>CheckCodeFilter</filter-name>
+    <filter-class>org.bs.ssh.filter.CheckCodeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CheckCodeFilter</filter-name>
+    <url-pattern>/backend/CheckCode.jpg</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+    <filter-name>attachmentFilter</filter-name>
+    <filter-class>org.bs.ssh.filter.AttachmentFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>attachmentFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>InitBeanFactory</servlet-name>
+    <servlet-class>org.bs.ssh.utils.InitBeanFactory</servlet-class>
+    <load-on-startup>0</load-on-startup>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>InitBeanFactory</servlet-name>
+    <url-pattern>/initBeanFactory</url-pattern>
+  </servlet-mapping>
+
+  <filter>
+    <filter-name>LoginFilter</filter-name>
+    <filter-class>org.bs.ssh.filter.LoginFilter</filter-class>
+    <init-param>
+      <param-name>urlPattern</param-name>
+      <param-value>.jsp,.html,.htm</param-value>
+    </init-param>
+    <init-param>
+      <param-name>escape</param-name>
+      <param-value>login.jsp,add_member_success.jsp,add_member.jsp</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>LoginFilter</filter-name>
+    <url-pattern>/backend/*</url-pattern>
+  </filter-mapping>
+  
+  
+   <!-- 为了解决懒加载异常问题，SSH集成的时候，通常需要定义OpenSessionInViewFilter -->
+   <filter>
+   		<filter-name>openSessionInViewFilter</filter-name>
+   		<filter-class>org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+   </filter>
+   <filter-mapping>
+   		<filter-name>openSessionInViewFilter</filter-name>
+   		<url-pattern>/*</url-pattern>
+           <dispatcher>request</dispatcher>
+     	    <dispatcher>forward</dispatcher>
+   </filter-mapping>
+   
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>request</dispatcher>
+     	 <dispatcher>forward</dispatcher>
+    </filter-mapping>    
+  
 </web-app>

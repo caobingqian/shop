@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+	<constant name="struts.action.extension" value="action,do,"/>
+	<constant name="struts.action.excludePattern" value=".*Servlet.*"/>
+	<constant name="struts.configuration.xml.reload" value="true"/>
+	<constant name="struts.convention.classes.reload" value="true"/>  
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.multipart.maxSize" value="10000000000"/>
+	<package name="common" extends="struts-default" abstract="true">
+		<interceptors>
+            <!--  配置拦截器-->
+            <interceptor name="loginCheck" class="org.bs.ssh.interceptor.LoginInterceptor"></interceptor>
+            <interceptor-stack name="baseStack">
+                <interceptor-ref name="exception">
+	                <param name="logEnabled">true</param>
+			        <param name="logLevel">error</param>
+		        </interceptor-ref>
+		        <interceptor-ref name="loginCheck">
+		        	<param name="urlPattern">backend</param>
+			        <param name="escape">login,user,checkCode,member</param>
+		        </interceptor-ref>
+                <interceptor-ref name="alias"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="i18n"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="chain"/>
+                <interceptor-ref name="debugging"/>
+                <interceptor-ref name="scopedModelDriven"/>
+                <interceptor-ref name="modelDriven">
+                	<param name="refreshModelBeforeResult">true</param>
+                </interceptor-ref>
+                <interceptor-ref name="fileUpload">
+                	<param name="maximumSize">1000000000</param>
+                </interceptor-ref>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="staticParams"/>
+                <interceptor-ref name="actionMappingParams"/>
+                <interceptor-ref name="params">
+                  <param name="excludeParams">dojo\..*,^struts\..*</param>
+                </interceptor-ref>
+                <interceptor-ref name="conversionError"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+                <interceptor-ref name="workflow">
+                    <param name="excludeMethods">input,back,cancel,browse</param>
+                </interceptor-ref>
+            </interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="baseStack"></default-interceptor-ref>
+		<global-results>
+			<result name="error">/backend/common/error.jsp</result>
+			<result name="index" type="redirect">/</result>
+			<result name="login_jsp" type="redirect">/backend/login.jsp</result>
+			<result name="main_jsp" type="redirect">/backend/main.jsp</result>
+		</global-results>
+	</package>
+</struts>

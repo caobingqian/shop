@@ -1,0 +1,61 @@
+@import url('../fonts/css/font-awesome.min.css');
+
+body {
+	margin:0px;
+	padding:0px;
+	font-size: 12px;
+	background:rgba(238, 238, 238, 0.98);
+}
+#navigation {
+	margin:0px;
+	padding:0px;
+	width:100%;
+	height:100%;
+}
+#navigation a.head {
+	cursor:pointer;
+	display: block;
+	line-height: 35px;
+	padding-left: 15px;
+	cursor: pointer;
+	position: relative;
+	border-bottom: 1px solid #e5e5e5;
+	font-weight: normal;
+}
+#navigation a.head:hover{
+	background:#f10215 url() repeat-x;
+	color:#fff;
+}
+#navigation ul {
+	border-width:0px;
+	margin:0px;
+	padding:0px;
+	text-indent:0px;
+	background-color:transparent;
+	color:#fff;
+	display: none;
+}
+#navigation ul:first-child{
+	display: block;
+}
+
+#navigation li {
+	list-style:none; display:inline;
+}
+#navigation li li a {
+	display:block;
+	text-decoration: none;
+	text-align:left;
+	line-height: 32px;
+	padding-left: 26px;
+	border-bottom: none;
+	font-weight: normal;
+	color: #666;
+}
+#navigation li li a:hover {
+	background:#f10215 url() repeat-x;
+	color:#fff;
+}
+.mb{
+	margin-right:10px;
+}
